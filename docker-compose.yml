@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  cuda:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: archcomputing/cuda:0.3
+    container_name: cuda
+    stdin_open: true  # docker run -i
+    tty: true         # docker run -t
+    working_dir: /root/code
+    volumes:
+      - .:/root/code
