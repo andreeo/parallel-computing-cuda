@@ -8,6 +8,6 @@ services:
     container_name: cuda
     stdin_open: true  # docker run -i
     tty: true         # docker run -t
-    working_dir: /root/code
+    working_dir: /root
     volumes:
       - .:/root/code

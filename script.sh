@@ -53,6 +53,8 @@ rm /tmp/cuda*
 export CUDA_INSTALL_PATH=/usr/local/cuda
 export PATH=$CUDA_INSTALL_PATH/bin:$PATH
 
+cd ..
+
 # clone repository GPGPU-sim
 git clone https://github.com/srirajpaul/gpgpu-sim_distribution.git
 

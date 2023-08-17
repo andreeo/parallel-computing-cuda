@@ -4,9 +4,17 @@ CC = nvcc
 CFLAGS =
 FPFLAGS = --cudart shared
 LDFLAGS =
-SOURCEFILES = $(target).cu cuda_device.cpp
+SOURCEFILES =
 3RDPARTY =
 TARGET = $(target)
+
+ifeq ($(target), sum_vectors)
+	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
+else ifeq ($(target), show_devices)
+	SOURCEFILES = $(target).cu cuda_device.cpp
+else
+	SOURCEFILES = $(target).cu cuda_device.cpp
+endif
 
 all: check-param $(TARGET)
 
@@ -14,7 +22,7 @@ $(TARGET): $(SOURCEFILES)
 	$(CC) $(CFLAGS) $(FPFLAGS) -o $(TARGET) $(SOURCEFILES) $(3RDPARTY) $(LDFLAGS)
 
 clean: check-param
-	rm -f $(TARGET) _* *ptx* checkpoint_files *~
+	rm -rf $(TARGET) _* *ptx* checkpoint_files *~
 
 indent: indent-format clean
 
