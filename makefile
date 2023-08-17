@@ -22,12 +22,12 @@ $(TARGET): $(SOURCEFILES)
 	$(CC) $(CFLAGS) $(FPFLAGS) -o $(TARGET) $(SOURCEFILES) $(3RDPARTY) $(LDFLAGS)
 
 clean: check-param
-	rm -rf $(TARGET) _* *ptx* checkpoint_files *~
+	rm -rf $(TARGET) _* *ptx* checkpoint_files *~ src/*~
 
 indent: indent-format clean
 
 indent-format:
-	indent *.cu *.cpp *.h \
+	indent *.cu *.cpp *.h src/*.cu src/*.cpp src/*.h \
 		-nbad -bap -nbc -bbo -bl -bli0 -bls -ncdb -nce -cp1 -cs -di2 \
 		-ndj -nfc1 -nfca -hnl -i2 -ip5 -lp -pcs -nprs -psl -saf -sai \
 		-saw -nsc -nsob -nut

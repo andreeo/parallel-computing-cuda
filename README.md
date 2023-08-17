@@ -4,9 +4,17 @@ Terminal programs applying the parallel programming model with the CUDA arquitec
 
 ## List of terminal programs
 
-PATTERN: program_filename - description
+PATTERN: \
+program_filename - description \
+cuda target: description
 
+```
 1. show_devices - show list of available cuda devices in the system
+2. sum_vectors  - add two vectors
+   cuda target: launch a kernel with multiple threads grouped into fix blocks.
+```
+
+``` source path:  /root/code ```
 
 # Pre-requisites
 
