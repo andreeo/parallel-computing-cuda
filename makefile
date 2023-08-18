@@ -10,6 +10,8 @@ TARGET = $(target)
 
 ifeq ($(target), sum_vectors)
 	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
+else ifeq ($(target), matrix2dim)
+	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
 else ifeq ($(target), show_devices)
 	SOURCEFILES = $(target).cu cuda_device.cpp
 else

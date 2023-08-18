@@ -4,7 +4,6 @@
 #include "common.h"
 #include "kernels.h"
 
-#define RANDOM_MAX 10
 #define THREADS_PER_BLOCK 10
 
 using namespace std;
