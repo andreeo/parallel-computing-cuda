@@ -9,9 +9,16 @@ program_filename - description \
 cuda target: description
 
 ```
-1. show_devices - show list of available cuda devices in the system
-2. sum_vectors  - add two vectors
+1. show_devices - show list of available cuda devices in the system.
+
+2. sum_vectors  - add two vectors.
    cuda target: launch a kernel with multiple threads grouped into fix blocks.
+
+3. matrix2dim   - generate a matrix using a existing matrix.
+   cuda target: using threads of one kernel lauching two dimensions.
+
+4. pi           - roughly calculate the value of pi.
+   cuda target: - making kernel threads work cooperatively using PR algorithm.
 ```
 
 ``` source path:  /root/code ```
