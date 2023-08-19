@@ -4,22 +4,18 @@ Terminal programs applying the parallel programming model with the CUDA arquitec
 
 ## List of terminal programs
 
-PATTERN: \
-program_filename - description \
-cuda target: description
+| Program file | Description |
+| --- | --- |
+|**show_devices**| show list of available cuda devices in the system.
+|**sum_vectors**| add two vectors.
+||*cuda target*: launch a kernel with multiple threads grouped into fix blocks.
+|**matrix2dim**| generate a matrix using a existing matrix.
+||*cuda target*: using threads of one kernel lauching two dimensions.
+|**pi**| roughly calculate the value of pi.
+||*cuda target*: making kernel threads work cooperatively using PR algorithm.
+|**displacer_matrix**| displacer a matrix 
+||*cuda target*: measure the execution time of a kernel.
 
-```
-1. show_devices - show list of available cuda devices in the system.
-
-2. sum_vectors  - add two vectors.
-   cuda target: launch a kernel with multiple threads grouped into fix blocks.
-
-3. matrix2dim   - generate a matrix using a existing matrix.
-   cuda target: using threads of one kernel lauching two dimensions.
-
-4. pi           - roughly calculate the value of pi.
-   cuda target: - making kernel threads work cooperatively using PR algorithm.
-```
 
 ``` source path:  /root/code ```
 
