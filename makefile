@@ -8,13 +8,9 @@ SOURCEFILES =
 3RDPARTY =
 TARGET = $(target)
 
-ifeq ($(target), sum_vectors)
-	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
-else ifeq ($(target), matrix2dim)
+ifeq ($(target), $(filter $(target),sum_vectors matrix2dim pi))
 	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
 else ifeq ($(target), show_devices)
-	SOURCEFILES = $(target).cu cuda_device.cpp
-else
 	SOURCEFILES = $(target).cu cuda_device.cpp
 endif
 
@@ -34,10 +30,8 @@ indent-format:
 		-ndj -nfc1 -nfca -hnl -i2 -ip5 -lp -pcs -nprs -psl -saf -sai \
 		-saw -nsc -nsob -nut
 
-exec: check-param 
+run: check-param 
 	./$(TARGET)
-
-run: exec clean
 
 check-param:
 ifndef target

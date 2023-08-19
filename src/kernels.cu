@@ -30,3 +30,61 @@ matrix_generator (int *mtxA, int *mtxB)
   if (col % 2 != 0)
     mtxB[idx] = 0;
 }
+
+__global__ void
+parallel_reduction (float *vec, float *output)
+{
+
+  int block_dim, threadId, calc, jump;
+
+  // set the block dimension
+  block_dim = blockDim.x;
+
+  // set the thread index
+  threadId = threadIdx.x;
+
+  // compute the value
+  calc = (threadId + 1) * (threadId + 1);       // which means pow(threadId + 1, 2)
+
+  // set data
+  vec[threadId] = (float) 1 / calc;
+
+  // sync all threads
+  __syncthreads ();
+
+  /*
+   * parallel reduction algorithm
+   *
+   * explination:
+   * implement the algorithm where the length of N is a power of 2
+   * so, the algorithm will be executed in log2(N) steps
+   * instead of N steps in the serial version.
+   * in each step each thread will add the value corresponding to its
+   * position and its position plus the jump (half)
+   * storing the partial result in its respective position.
+   */
+
+  // compute the jump
+  jump = block_dim / 2;
+
+  // do reduction
+  while (jump > 0)
+  {
+    if (threadId < jump)
+    {
+      // add the value of the position and the position plus the jump
+      vec[threadId] = vec[threadId] + vec[threadId + jump];
+    }
+    __syncthreads ();
+
+    // update the jump
+    jump /= 2;
+  }
+
+  // set the output
+  if (threadId == 0)
+  {
+    *output = vec[0];
+  }
+
+}
