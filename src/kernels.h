@@ -53,6 +53,21 @@ __global__ void parallel_reduction (float *vec, float *output);
  *  
  *  @return void
  */
-__global__ void displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE, int MTX_ROW_SIZE);
+__global__ void displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE,
+                                  int MTX_ROW_SIZE);
+
+
+/**
+ *  function: sort_vector
+ *  ---------------------
+ *  Sort a vector of integers
+ * 
+ *  @param[in] vec vector to be sorted
+ *  @param[out] vec_output vector that store the result of the sort
+ *  @param[in] size size of the vector
+ *  
+ *  @return void
+ */
+__global__ void sort_vector (int *vec, int *vec_output, int size);
 
 #endif

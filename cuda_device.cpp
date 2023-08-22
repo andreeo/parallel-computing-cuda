@@ -4,7 +4,7 @@
 
 using namespace std;
 
-__host__ void
+__host__ struct cudaDeviceProp
 deviceProperties (int deviceId)
 {
   struct cudaDeviceProp props;
@@ -67,4 +67,7 @@ deviceProperties (int deviceId)
     multiProcessorCount << ")     : " << cudaCores *
     props.multiProcessorCount << endl;
   cout << "> Memoria Global (total)       : " << props.totalGlobalMem / 1048576 << " MiB" << endl;      // to convert bytes to Mebibyte (MiB)
+  cout << endl;
+
+  return props;
 }

@@ -13,7 +13,7 @@
 *   returns: void
 */
 
-__host__ void deviceProperties (int device_id);
+__host__ struct cudaDeviceProp deviceProperties (int device_id);
 
 
 #endif

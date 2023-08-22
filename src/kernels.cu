@@ -89,7 +89,9 @@ parallel_reduction (float *vec, float *output)
 
 }
 
-__global__ void displacer_matrix(int *mtx, int *mtx_output, int MTX_COL_SIZE, int MTX_ROW_SIZE)
+__global__ void
+displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE,
+                  int MTX_ROW_SIZE)
 {
   // index - col and row
   int col = threadIdx.x;
@@ -98,7 +100,7 @@ __global__ void displacer_matrix(int *mtx, int *mtx_output, int MTX_COL_SIZE, in
   // compute the global thread index of univoque way using lineal index
   int idx = col + row * blockDim.x;
 
-  if(row == 0) // first row
+  if (row == 0)                 // first row
   {
     // set the first row with the last row of the matrix
     mtx_output[idx] = mtx[MTX_COL_SIZE * MTX_ROW_SIZE - col - 1];
@@ -108,4 +110,28 @@ __global__ void displacer_matrix(int *mtx, int *mtx_output, int MTX_COL_SIZE, in
     // set the rest of the matrix
     mtx_output[idx] = mtx[idx - MTX_COL_SIZE];
   }
+}
+
+__global__ void
+sort_vector (int *vec, int *vec_output, int size)
+{
+  int threadId = threadIdx.x;
+
+  int i, count = 0;
+  for (i = 0; i < size; i++)
+  {
+    if (vec[threadId] > vec[i])
+    {
+      count++;
+    }
+    // if the values are equal, consider the smallest the one originally
+    // find in the lowest position
+    else if ((vec[threadId] == vec[i]) && threadId > i)
+    {
+      count++;
+    }
+  }
+
+  // sort each value respectively its range (position)
+  vec_output[count] = vec[threadId];
 }
