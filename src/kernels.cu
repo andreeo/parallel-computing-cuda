@@ -113,7 +113,7 @@ displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE,
 }
 
 __global__ void
-sort_vector (int *vec, int *vec_output, int size)
+rank_sort_algorithm (int *vec, int *vec_output, int size)
 {
   int threadId = threadIdx.x;
 

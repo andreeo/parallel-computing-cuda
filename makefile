@@ -8,7 +8,7 @@ SOURCEFILES =
 3RDPARTY =
 TARGET = $(target)
 
-ifeq ($(target), $(filter $(target),sum_vectors matrix2dim pi displacer_matrix counting_sort))
+ifeq ($(target), $(filter $(target),sum_vectors matrix2dim pi displacer_matrix rank_sort_algorithm))
 	SOURCEFILES = ./src/$(target).cu cuda_device.cpp ./src/common.cpp ./src/kernels.cu
 else ifeq ($(target), show_devices)
 	SOURCEFILES = $(target).cu cuda_device.cpp

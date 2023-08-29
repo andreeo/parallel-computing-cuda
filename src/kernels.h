@@ -58,9 +58,9 @@ __global__ void displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE,
 
 
 /**
- *  function: sort_vector
+ *  function: rank_sort_algorithm
  *  ---------------------
- *  Sort a vector of integers
+ *  Sort a vector of integers using the rank sort algorithm
  * 
  *  @param[in] vec vector to be sorted
  *  @param[out] vec_output vector that store the result of the sort
@@ -68,6 +68,6 @@ __global__ void displacer_matrix (int *mtx, int *mtx_output, int MTX_COL_SIZE,
  *  
  *  @return void
  */
-__global__ void sort_vector (int *vec, int *vec_output, int size);
+__global__ void rank_sort_algorithm (int *vec, int *vec_output, int size);
 
 #endif
