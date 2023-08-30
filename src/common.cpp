@@ -35,3 +35,25 @@ print_int_matrix (char *matrix_name, int *matrix, int size, int mtx_col_size)
 
   return;
 }
+
+void
+rank_sort_algorithm_cpu (int *vector, int *output_vector, int size)
+{
+  int i, j, count;
+  for (i = 0; i < size; i++)
+  {
+    count = 0;
+    for (j = 0; j < size; j++)
+    {
+      if (vector[i] > vector[j])
+      {
+        count++;
+      }
+      else if (vector[i] == vector[j] && i > j)
+      {
+        count++;
+      }
+    }
+    output_vector[count] = vector[i];
+  }
+}

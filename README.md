@@ -15,7 +15,10 @@ Terminal programs applying the parallel programming model with the CUDA arquitec
 ||*cuda target*: making kernel threads work cooperatively using PR algorithm.
 |**displacer_matrix**| displacer a matrix 
 ||*cuda target*: measure the execution time of a kernel.
-
+|**rank_sort_algorithm**| sort a vector using the rank sort algorithm.
+||*cuda target*: take advantage of parallelism of the GPU to optimize algorithms.
+|**performance**| sort a vector in gpu/cpu to compare the performance.
+||*cuda target*: calculate the performance of the gain of GPU relative to CPU.
 
 ``` source path:  /root/code ```
 
