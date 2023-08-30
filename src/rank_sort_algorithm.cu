@@ -83,7 +83,8 @@ main (int argc, char **argv)
   cudaEventRecord (start, 0);
 
   // call the kernel
-  rank_sort_algorithm <<< block, threadsPerBlock >>> (dev_vecB, dev_vecR, size);
+  rank_sort_algorithm <<< block, threadsPerBlock >>> (dev_vecB, dev_vecR,
+                                                      size);
 
   // wait for compute device to finish
   cudaDeviceSynchronize ();
